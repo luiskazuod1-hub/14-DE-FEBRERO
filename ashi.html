@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>💖</title>
+
+<style>
+body{
+margin:0;
+font-family:Arial;
+background:linear-gradient(135deg,#ff9a9e,#fad0c4);
+display:flex;
+justify-content:center;
+align-items:center;
+height:100vh;
+}
+
+.container{
+text-align:center;
+padding:20px;
+}
+
+img{
+width:90%;
+max-width:400px;
+border-radius:20px;
+box-shadow:0 10px 30px rgba(0,0,0,.3);
+animation:float 3s infinite ease-in-out;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0);}
+50%{transform:translateY(-10px);}
+}
+
+h2{
+margin-top:20px;
+color:#fff;
+text-shadow:2px 2px 6px #000;
+}
+
+.buttons{
+margin-top:25px;
+position:relative;
+}
+
+button{
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:15px;
+cursor:pointer;
+transition:.3s;
+margin:10px;
+}
+
+#yes{
+background:#4caf50;
+color:white;
+animation:pulse 1.5s infinite;
+position:relative;
+z-index:10;
+}
+
+#no{
+background:#f44336;
+color:white;
+}
+
+button:hover{
+transform:scale(1.1);
+}
+
+@keyframes pulse{
+0%{transform:scale(1);}
+50%{transform:scale(1.08);}
+100%{transform:scale(1);}
+}
+
+#message{
+display:none;
+color:white;
+font-size:30px;
+margin-top:20px;
+animation:pop .8s;
+}
+
+@keyframes pop{
+0%{transform:scale(0);}
+100%{transform:scale(1);}
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- PON TU IMAGEN AQUI -->
+<img src="https://i.pinimg.com/474x/fe/c8/e3/fec8e37939fcf831f76a50b7266d75c4.jpg">
+
+<h2>¿QUIERES SER MI 14 DE FEBRERO?</h2>
+
+<div class="buttons">
+<button id="yes">SI 💖</button>
+<button id="no">NO 😢</button>
+</div>
+
+<div id="message">I love u my apestositaaaa c:</div>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+<script>
+
+const noTexts=["¿estas segura?","¿de velda?","porque nio?","dale al chi 😭"];
+let count=0;
+
+const noBtn=document.getElementById("no");
+const yesBtn=document.getElementById("yes");
+
+noBtn.onclick=()=>{
+
+count++;
+
+noBtn.style.transform=`scale(${1+count*0.35})`;
+noBtn.innerText=noTexts[count%noTexts.length];
+
+// mover SI hacia arriba
+yesBtn.style.transform=`translateY(${-count*8}px) scale(1.08)`;
+yesBtn.style.zIndex="999";
+
+};
+
+yesBtn.onclick=()=>{
+
+document.querySelector(".buttons").style.display="none";
+document.getElementById("message").style.display="block";
+
+confetti({
+particleCount:300,
+spread:120,
+origin:{y:0.6}
+});
+
+setInterval(()=>{
+confetti({
+particleCount:120,
+spread:100
+});
+},1200);
+
+};
+
+</script>
+
+</body>
+</html>
